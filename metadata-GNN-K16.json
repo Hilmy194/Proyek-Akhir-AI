@@ -1,0 +1,283 @@
+{
+  "kode_kelompok": "K16",
+  "topik_pilihan": 3,
+  "nama_topik": "Graph Neural Network (GNN)",
+  "judul_proyek": "Personalized Music Recommendation System Using Graph Neural Network on LastFM Dataset",
+  "abstrak_singkat": "Proyek ini membangun sistem rekomendasi musik personal menggunakan Graph Neural Network pada LastFM Dataset. Data listening history diproses menjadi graph bipartite User–Artist, dengan edge berupa interaksi mendengarkan musik dan listen_count sebagai sinyal preferensi. Model utama yang digunakan adalah LightGCN dan dibandingkan dengan baseline Popularity-Based Recommendation. Hasil eksperimen menunjukkan model terbaik LightGCN memperoleh Precision@10 sebesar 0.827273, Recall@10 sebesar 0.039307, dan NDCG@10 sebesar 0.845210.",
+
+  "metode_ai": [
+    {
+      "nama": "LightGCN",
+      "peran": "utama",
+      "varian": "Graph-based collaborative filtering dengan embedding_dim=64, num_layers=3, learning_rate=0.001, batch_size=1024, BPR Loss, dan 30 epoch",
+      "catatan": "Model utama untuk mempelajari embedding user dan artist dari graph bipartite User–Artist."
+    },
+    {
+      "nama": "Popularity-Based Recommendation",
+      "peran": "baseline",
+      "varian": "Rekomendasi berdasarkan artist paling populer pada data train",
+      "catatan": "Baseline sederhana untuk membandingkan performa model LightGCN."
+    }
+  ],
+
+  "frameworks": [
+    {
+      "nama": "Python",
+      "versi": "3.x",
+      "kegunaan": "Bahasa utama untuk preprocessing data, implementasi pipeline rekomendasi, training model, evaluasi, dan dokumentasi notebook."
+    },
+    {
+      "nama": "PyTorch",
+      "versi": "2.x",
+      "kegunaan": "Implementasi model LightGCN, embedding layer, sparse matrix propagation, training dengan BPR Loss, dan optimisasi menggunakan Adam."
+    },
+    {
+      "nama": "Pandas",
+      "versi": "",
+      "kegunaan": "Load dataset, data cleaning, agregasi interaksi User–Artist, train-test split, dan export hasil eksperimen."
+    },
+    {
+      "nama": "Scikit-learn",
+      "versi": "",
+      "kegunaan": "Label encoding untuk mengubah Username dan Artist menjadi indeks numerik."
+    },
+    {
+      "nama": "Matplotlib",
+      "versi": "",
+      "kegunaan": "Visualisasi distribusi data listening history, graph visualization, dan grafik training loss LightGCN."
+    },
+    {
+      "nama": "NetworkX",
+      "versi": "",
+      "kegunaan": "Visualisasi graph bipartite User–Artist pada dataset LastFM."
+    },
+    {
+      "nama": "Gradio",
+      "versi": "",
+      "kegunaan": "Membuat demo antarmuka sederhana untuk menampilkan hasil rekomendasi artist dari model LightGCN."
+    }
+  ],
+
+  "datasets": [
+    {
+      "nama": "LastFM Dataset",
+      "tipe": "publik",
+      "sumber": "Kaggle",
+      "url_sumber_publik": "https://www.kaggle.com/datasets/harshal19t/lastfm-dataset",
+      "jumlah_sampel": 166153,
+      "jumlah_kelas": 0,
+      "proses_akuisisi_mandiri": "",
+      "peran_di_proyek": "Dataset utama berisi listening history pengguna. Data diproses menjadi interaksi User–Artist dengan listen_count sebagai implicit feedback untuk membangun recommendation system berbasis graph.",
+      "spek_rl": null
+    }
+  ],
+
+  "metrik_utama": [
+    "Precision@10",
+    "Recall@10",
+    "NDCG@10",
+    "BPR Loss"
+  ],
+
+  "klaim_bonus": [
+    "B1"
+  ],
+
+  "anggota": [
+    {
+      "nama": "Gerrardin Nabil Zulhian",
+      "npm": "2306250661",
+      "peran_utama": "Data Engineering, Graph Preparation & Dataset Analysis",
+      "focus_area": [
+        "Eksplorasi dataset LastFM",
+        "Data cleaning dan pengecekan missing value",
+        "Pembentukan interaksi User–Artist",
+        "Encoding user dan artist",
+        "Train-test split",
+        "Visualisasi graph bipartite User–Artist"
+      ],
+      "konsep_dikuasai_implementasi": [
+        "Pandas untuk membaca dan membersihkan dataset",
+        "Groupby untuk membentuk listen_count",
+        "Label encoding user dan artist",
+        "Train-test split per user",
+        "Pembuatan data interaksi untuk graph bipartite",
+        "Graph visualization menggunakan NetworkX"
+      ],
+      "konsep_dikuasai_teori": [
+        "Implicit feedback pada recommender system",
+        "Representasi data user-item",
+        "Data sparsity pada sistem rekomendasi",
+        "Peran preprocessing terhadap kualitas model",
+        "Konsep graph bipartite User–Artist"
+      ],
+      "bagian_laporan": [
+        "Bab I - Pendahuluan",
+        "Bab III.1 - Dataset dan Pra-pemrosesan",
+        "Analisis karakteristik dataset",
+        "Pembahasan graph bipartite User–Artist"
+      ],
+      "bagian_kode": [
+        "Load dataset",
+        "EDA",
+        "Data cleaning",
+        "User-artist interaction construction",
+        "User dan artist encoding",
+        "Train-test split",
+        "Graph visualization"
+      ]
+    },
+
+    {
+      "nama": "Muhammad Hilmy Mahardika",
+      "npm": "2306267006",
+      "peran_utama": "Core GNN Architecture & LightGCN Implementation",
+      "focus_area": [
+        "Implementasi model LightGCN",
+        "Sparse adjacency matrix",
+        "Embedding propagation",
+        "Training model dengan BPR Loss",
+        "Negative sampling",
+        "Penulisan bagian metode dan arsitektur model"
+      ],
+      "konsep_dikuasai_implementasi": [
+        "Pembentukan edge_index graph",
+        "Sparse adjacency matrix",
+        "PyTorch embedding layer",
+        "LightGCN propagation",
+        "Negative sampling",
+        "BPR Loss dan optimizer Adam"
+      ],
+      "konsep_dikuasai_teori": [
+        "Graph Neural Network",
+        "Graph-based collaborative filtering",
+        "User-item embedding",
+        "Bayesian Personalized Ranking",
+        "High-order connectivity pada graph recommendation",
+        "Message passing pada GNN"
+      ],
+      "bagian_laporan": [
+        "Bab II.1 - Studi Literatur",
+        "Bab II.2 - Arsitektur Model",
+        "Bab II.3 - Justifikasi Metode",
+        "Bab III.2 - Implementasi Model"
+      ],
+      "bagian_kode": [
+        "Build graph",
+        "Normalized sparse adjacency matrix",
+        "LightGCN class",
+        "Training loop",
+        "Negative sampling",
+        "Embedding propagation"
+      ]
+    },
+
+    {
+      "nama": "Ahmad Fariz Khairi",
+      "npm": "2306211370",
+      "peran_utama": "Evaluation, Baseline Comparison & Recommendation Analysis",
+      "focus_area": [
+        "Implementasi baseline popularity-based recommendation",
+        "Evaluasi performa recommendation system",
+        "Perbandingan baseline dan LightGCN",
+        "Analisis hasil eksperimen",
+        "Interpretasi metrik evaluasi"
+      ],
+      "konsep_dikuasai_implementasi": [
+        "Popularity-based recommendation",
+        "Precision@K",
+        "Recall@K",
+        "NDCG@K",
+        "Top-K recommendation",
+        "Filtering seen items dari data train"
+      ],
+      "konsep_dikuasai_teori": [
+        "Evaluation metric untuk recommender system",
+        "Interpretasi precision, recall, dan NDCG",
+        "Baseline comparison",
+        "Evaluasi model berbasis implicit feedback",
+        "Limitasi evaluasi pada dataset sparse"
+      ],
+      "bagian_laporan": [
+        "Bab III.3 - Metrik Evaluasi",
+        "Bab III.4 - Hasil Eksperimen",
+        "Analisis baseline vs LightGCN",
+        "Bab V - Kesimpulan"
+      ],
+      "bagian_kode": [
+        "Popularity-based baseline",
+        "Evaluation function",
+        "LightGCN evaluation",
+        "Baseline comparison table",
+        "Sample recommendation output"
+      ]
+    },
+
+    {
+      "nama": "Muhammad Dzaky Maulana",
+      "npm": "2306264401",
+      "peran_utama": "Experiment Pipeline, Demo System & Result Export",
+      "focus_area": [
+        "Menyusun pipeline notebook eksperimen",
+        "Hyperparameter tuning",
+        "Training loss visualization",
+        "Export hasil eksperimen",
+        "Implementasi demo recommendation menggunakan Gradio",
+        "Penyusunan metadata JSON"
+      ],
+      "konsep_dikuasai_implementasi": [
+        "Notebook pipeline organization",
+        "Training loss tracking",
+        "Export experiment_results.csv",
+        "Export sample_recommendations.csv",
+        "Penyusunan metadata.json",
+        "Gradio recommendation demo",
+        "Pipeline validation"
+      ],
+      "konsep_dikuasai_teori": [
+        "Struktur eksperimen machine learning",
+        "Reproducibility dalam proyek AI",
+        "Hyperparameter tuning",
+        "Interpretasi training loss",
+        "Pipeline recommendation system",
+        "End-to-end workflow recommendation system"
+      ],
+      "bagian_laporan": [
+        "Bab II.4 - Block Diagram Sistem",
+        "Bab II.5 - Flowchart Program",
+        "Bab III.5 - Hyperparameter Tuning",
+        "Lampiran Metadata Proyek",
+        "Dokumentasi eksperimen"
+      ],
+      "bagian_kode": [
+        "Notebook pipeline checking",
+        "Training loss visualization",
+        "Result export",
+        "Metadata export",
+        "Sample recommendation export",
+        "Gradio demo",
+        "Final checking pipeline"
+      ]
+    }
+  ],
+
+  "tautan": {
+    "github": "",
+    "colab": "https://colab.research.google.com/drive/15K6IFc2a0WUqQLhyld0SCAuXqcq-y_Fl",
+    "dataset_mandiri": null,
+    "video_demo": "TBD"
+  },
+
+  "ai_assistant_usage": {
+    "digunakan": true,
+    "tools": [
+      "ChatGPT"
+    ],
+    "bagian": [
+      "Membantu implementasi LightGCN dan evaluasi recommendation system",
+      "Membantu visualisasi graph bipartite User–Artist",
+      "Membantu implementasi demo recommendation menggunakan Gradio"
+    ],
+    "estimasi_persentase": 40
+  }
+}
